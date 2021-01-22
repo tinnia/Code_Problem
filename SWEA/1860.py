@@ -1,14 +1,21 @@
 for T in range(1, int(input()) + 1):
     N, M, K = map(int, input().split())
-    people = list(map(int, input().split()))
-    people.sort()
+    times = list(map(int, input().split()))
+    times.sort()
 
-    cnt = 0
-    for time in range(people[-1]+1):
+    cnt = i = 0
+    for t in range(times[-1] + 1):
+        if t != 0:
+            if t % M == 0:
+                cnt += K
 
+        if t == times[i]:
+            if cnt == 0:
+                print('#{} Impossible'.format(T))
+                break
+            else:
+                cnt -= 1
+                i += 1
 
-
-        if answer:
+        if t == times[-1] and cnt != 0:
             print('#{} Possible'.format(T))
-        else:
-            print('#{} Impossible'.format(T))
