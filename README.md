@@ -10,7 +10,7 @@
 
 <br />
 
-##### :name_badge: Commit Name
+##### :name_badge: Commit 명
 
 * YYMMDD
 
