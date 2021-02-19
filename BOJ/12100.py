@@ -1,48 +1,36 @@
 from copy import deepcopy
 
 
-def rotate(board):
-    new_board = deepcopy(board)
-    for i in range(N):
-        for j in range(N):
-            new_board[j][N - i - 1] = board[i][j]
-    return new_board
-
-def move(board):
-    board= rotate(board)
-    for j in range(N):
-        idx = 0
-        for i in range(1, N):
-            if board[i][j]:
-                tmp = board[i][j]
-                board[i][j] = 0
-                if board[idx][j] == 0:
-                    board[idx][j] = tmp
-                elif board[idx][j] == tmp:
-                    board[idx][j] = tmp * 2
-                    idx += 1
-                else:
-                    idx += 1
-                    board[idx][j] = tmp
+def rotate(B, n):
+    board1 = deepcopy(B)
+    for i in range(n):
+        for j in range(n):
+            board1[j][n - i - 1] = B[i][j]
+    return board1
 
 
+def convert(lst, n):
+    board1 = [i for i in lst if i]
+    for i in range(1, len(board1)):
+        if board1[i-1] == board1[i]:
+            board1[i-1] *= 2
+            board1[i] = 0
+    board1 = [i for i in board1 if i]
+    return board1 + [0] * (n - len(board1))
 
 
-
-def dfs(cnt):
-    global ans, board
-    if cnt == 5:
-        for i in range(N):
-            ans = max(ans, max(board[i]))
-
-    tmp = deepcopy(board)
+def dfs(n, B, cnt):
+    tmp = max([max(i) for i in B])
+    if cnt == 0:
+        return tmp
     for _ in range(4):
-        move(tmp)
-        dfs(cnt + 1)
-        board = deepcopy(tmp)
+        x = [convert(i, n) for i in B]
+        if x != B:
+            tmp = max(tmp, dfs(n, x, cnt-1))
+        B = rotate(B, n)
+    return tmp
 
 
 N = int(input())
 board = [list(map(int, input().split())) for _ in range(N)]
-ans = 0
-dfs(0)
+print(dfs(N, board, 5))
