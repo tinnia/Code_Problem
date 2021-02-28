@@ -21,3 +21,21 @@ row = [0] * N
 res = 0
 backtrack(0)
 print(res)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
