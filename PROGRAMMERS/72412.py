@@ -1,14 +1,18 @@
 # def solution(info, query):
 #     answer = []
-#     query = [query[i].split() for i in range(len(query))]
+#     lst = [[] for _ in range(len(query))]
+#     print(query)
 #
-#     print(q)
-#     for i in info:
-#         tmp = i.split()
-#         print(tmp)
-#         for j in q:
-#             if tmp
-#
+#     for i in range(len(query)):
+#         tmp = query[i].split()
+#         for j in range(8):
+#             if j == 7:
+#                 lst[i].append(int(tmp[j]))
+#             elif tmp[j] == 'and' or tmp[j] == '-':
+#                 continue
+#             else:
+#                 lst[i].append(tmp[j])
+#     print(lst)
 #
 #     return answer
 
