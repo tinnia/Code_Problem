@@ -11,13 +11,15 @@ dp = [[0,0] for _ in range(N + 1)]
 
 visit = [0] * (N + 1)
 
-ans = 0
 def func(x):
     visit[x] = 1
+    print(visit)
     dp[x][0] = 1
     dp[x][1] = 0
+    print(dp)
     for i in tree[x]:
-        if visit[i]:
+        print(i)
+        if not visit[i]:
             func(i)
             dp[x][0] += dp[i][1]
             dp[x][1] += max(dp[i][0], dp[i][1])
@@ -25,3 +27,4 @@ def func(x):
 
 
 func(1)
+print(dp)
