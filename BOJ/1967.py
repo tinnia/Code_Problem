@@ -23,4 +23,5 @@ for _ in range(n - 1):
     x, y, w = map(int, input().split())
     lst[x].append([y, w])
     lst[y].append([x, w])
+
 print(bfs(bfs(1, 1), 2))
